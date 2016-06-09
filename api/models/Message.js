@@ -13,20 +13,24 @@ module.exports = {
             primaryKey: true,
             autoIncrement: true
         },
-        topic: {
+        topics: { /** é necessário a mensagem conter pelo menos 1 tópico, estes devem estar previamente registrados na bd Topic **/
+            collection: 'topic',
+            via: 'messages',
+            required: true,
+            notNull: true
+        },
+        message: { /** mensagem é necessár **/
             type: 'string',
             required: true,
-            notNull: true,
+            notNull: true
         },
-        message: {
-            type: 'string',
-            required: true,
-            notNull: true,
-        },
-        creator: {
+        creator: { /** é necessário a mensagem conter o criador da mensagem, este deve estar previamente registrado na bd User **/
             model: 'user',
             required: true,
             notNull: true
+        },
+        reposter:{ /** é necessário a mensagem conter o criador da mensagem, este deve estar previamente registrado na bd User **/
+            model: 'user'
         }
     }
 };
