@@ -50,6 +50,12 @@ angular
         templateUrl: 'views/account/edit.html',
         controller: 'AccountCtrl'
       })
+      .state('profile', {
+        url: '/profile?username',
+        parent: 'dashboard',
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
       .state('dashboard', {
         url: '/dashboard',
         parent: 'base',
