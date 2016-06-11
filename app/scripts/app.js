@@ -13,9 +13,11 @@ angular
     'ui.router',
     'ngAnimate'
   ])
-  .config(function($stateProvider, $urlRouterProvider) {
-
+  .config(function ($stateProvider, $urlRouterProvider) {
+    console.log(JSON.stringify($urlRouterProvider));
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+    $urlRouterProvider.when('/account', '/account/overview');
+
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
@@ -24,27 +26,38 @@ angular
         url: '',
         templateUrl: 'views/base.html'
       })
-        .state('login', {
-          url: '/login',
-          parent: 'base',
-          templateUrl: 'views/login.html',
-          controller: 'LoginCtrl'
-        })
-        .state('dashboard', {
-          url: '/dashboard',
-          parent: 'base',
-          templateUrl: 'views/dashboard.html',
-          controller: 'DashboardCtrl'
-        })
-          .state('overview', {
-            url: '/overview',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/overview.html'
-          })
-          .state('reports', {
-            url: '/reports',
-            parent: 'dashboard',
-            templateUrl: 'views/dashboard/reports.html'
-          });
+      .state('login', {
+        url: '/login',
+        parent: 'base',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .state('account', {
+        url: '/account',
+        parent: 'dashboard',
+        templateUrl: 'views/account/overview.html',
+        controller: 'AccountCtrl'
+      })
+      .state('account-create', {
+        url: '/account/create',
+        parent: 'dashboard',
+        templateUrl: 'views/account/create.html'
+      })
+      .state('dashboard', {
+        url: '/dashboard',
+        parent: 'base',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
+      .state('overview', {
+        url: '/overview',
+        parent: 'dashboard',
+        templateUrl: 'views/dashboard/overview.html'
+      })
+      .state('reports', {
+        url: '/reports',
+        parent: 'dashboard',
+        templateUrl: 'views/dashboard/reports.html'
+      });
 
   });
