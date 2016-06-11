@@ -18,12 +18,31 @@ module.exports = {
             required: true,
             notNull: true,
             unique: true,
-            primaryKey: true,
+            primaryKey: true
         },
         password: {
             type: 'string',
             required: true,
             notNull: true
+        },
+        name:{
+          type:'string',
+          required: true,
+          notNull:true
+        },
+        birthday:{
+            type: 'date',
+            required:true,
+            notNull:true
+        },
+        description:{
+            type: 'string',
+            required: true,
+            notNull: true
+        },
+        photo:{
+            type:'string',
+            required:false
         },
         messages: {
             collection: 'message',

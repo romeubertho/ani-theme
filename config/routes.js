@@ -36,6 +36,9 @@ module.exports.routes = {
     },
     'get /messenger': {
         view: 'message'
+    },
+    'get /register': {
+        view: 'register'
     }
 
     /***************************************************************************
