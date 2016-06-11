@@ -1,8 +1,18 @@
 'use strict';
 
 angular.module('yapp')
-    .controller('AccountCtrl', function ($scope, $state) {
+    .controller('AccountCtrl', function ($scope, $state, AccountService) {
         $scope.$state = $state;
+        $scope.user = {};
+
+
+        AccountService.getUser('maria').then(function (user, err) {
+            console.log('success');
+            $scope.user = user.data;
+        }, function (err) {
+            console.log('err');
+        });
+
         $scope.register = function () {
             var data =
                 {
@@ -12,12 +22,20 @@ angular.module('yapp')
                     'birthday': $scope.birthday,
                     'description': $scope.description
                 };
-            $http.get("user/" + $scope.username).success(function (success) {
-                console.log("procurando");
-                console.log(success);
+            AccountService.create(data).then(function (err, results) {
+                console.log('success');
+            }, function (err) {
+                console.log('err');
             });
-            $http.post("user/register/", data).success(function (success) {
-                console.log(success);
+        };
+
+        $scope.edit = function () {
+            debugger;
+            AccountService.create($scope.user, $scope.username).then(function (user, err) {
+                debugger;
+                $scope.user
+            }, function (err) {
+                console.log('err');
             });
         };
     });

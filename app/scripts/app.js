@@ -41,7 +41,14 @@ angular
       .state('account-create', {
         url: '/account/create',
         parent: 'dashboard',
-        templateUrl: 'views/account/create.html'
+        templateUrl: 'views/account/create.html',
+        controller: 'AccountCtrl'
+      })
+      .state('account-edit', {
+        url: '/account/edit',
+        parent: 'dashboard',
+        templateUrl: 'views/account/edit.html',
+        controller: 'AccountCtrl'
       })
       .state('dashboard', {
         url: '/dashboard',
