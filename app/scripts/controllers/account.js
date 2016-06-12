@@ -8,7 +8,7 @@ angular.module('yapp')
 
         AccountService.getUser('maria').then(function (user, err) {
             console.log('success');
-            $scope.user = user.data;
+            $scope.user = user.data.userData;
         }, function (err) {
             console.log('err');
         });
