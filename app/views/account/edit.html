@@ -2,11 +2,11 @@
 	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Edit new Account</a>
 	<div ng-controller="AccountCtrl">
 		<form>
-			<input class="add-input" type="text" placeholder="Your username" ng-model="user.username" ng-model-instant/><br/>
-			<input class="add-input" type="text" placeholder="Your name" ng-model="user.name" ng-model-instant/><br/>
-			<input class="add-input" type="password" ng-model="user.password" ng-model-instant/><br/>
-			<input class="add-input" type="date" ng-model="user.birthday" ng-model-instant/><br/>
-			<input class="add-input" type="text" ng-model="user.description" ng-model-instant/><br/>
+			<input class="add-input" type="text" placeholder="Your username" ng-model="user.username" ng-readonly="user.username"/><br/>
+			<input class="add-input" type="text" placeholder="Your name" ng-model="user.name"/><br/>
+			<input class="add-input" type="password" ng-model="user.password"/><br/>
+			<input class="add-input" type="text" ng-model="user.birthday" ng-readonly="user.birthday" onblur="(this.type='text')"/><br/>
+			<input class="add-input" type="text" ng-model="user.description"/><br/>
 			<button ng-click='edit()'>Register</button>
 		</form>
 		<hr>

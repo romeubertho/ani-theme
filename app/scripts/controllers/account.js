@@ -3,12 +3,15 @@
 angular.module('yapp')
     .controller('AccountCtrl', function ($scope, $state, AccountService) {
         $scope.$state = $state;
+        $scope.data={};
         $scope.user = {};
 
 
         AccountService.getUser('maria').then(function (user, err) {
             console.log('success');
             $scope.user = user.data.userData;
+            $scope.data = user.data.userData;
+            console.log($scope.data);
         }, function (err) {
             console.log('err');
         });
@@ -30,8 +33,9 @@ angular.module('yapp')
         };
 
         $scope.edit = function () {
+            
             debugger;
-            AccountService.create($scope.user, $scope.username).then(function (user, err) {
+            AccountService.edit($scope.user, $scope.user.id).then(function (user, err) {
                 debugger;
                 $scope.user
             }, function (err) {

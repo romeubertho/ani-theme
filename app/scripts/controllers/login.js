@@ -16,5 +16,11 @@ angular.module('yapp')
 
       return false;
     }
+    $scope.register = function() {
+
+      $location.path('/register');
+
+      return false;
+    }
 
   });
