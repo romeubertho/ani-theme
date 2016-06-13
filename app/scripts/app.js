@@ -18,7 +18,6 @@ angular
     $httpProvider.interceptors.push(['$q', '$location', '$window', function($q, $location, $window) {
       return {
             'request': function (config) {
-              debugger;
                 config.headers = config.headers || {};
                 if ($window.localStorage.token) {
                     config.headers.Authorization = 'Bearer ' + $window.localStorage.token;

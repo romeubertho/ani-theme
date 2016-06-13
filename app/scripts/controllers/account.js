@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('yapp')
-    .controller('AccountCtrl', function ($scope, $state, AccountService) {
+    .controller('AccountCtrl', function ($scope, $window, $state, AccountService) {
         $scope.$state = $state;
         $scope.data={};
         $scope.user = {};
-
 
         AccountService.getUser('maria').then(function (user, err) {
             console.log('success');
