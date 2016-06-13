@@ -20,11 +20,13 @@ app.controller('RegisterCtrl', function ($scope, $location, AccountService) {
                 {
                     'username': $scope.username,
                     'password': $scope.password,
+                    'confirmPassword': $scope.confirmPassword,
                     'name': $scope.name,
                     'birthday': $scope.birthday,
                     'description': $scope.description
                 };
             AccountService.create(data).then(function (err, results) {
+                debugger;
                 console.log('success');
             }, function (err) {
                 console.log('err');

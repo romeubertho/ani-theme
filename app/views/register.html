@@ -10,7 +10,7 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
 
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" class="form-control input-underline input-lg" ng-model="username" placeholder="Username">
+                        <input type="text" class="form-control input-underline input-lg" ng-model="username" placeholder="Username" usernameValidator>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="Name">
@@ -23,6 +23,9 @@ Inspired by http://dribbble.com/shots/917819-iPad-Calendar-Login?list=shots&sort
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-underline input-lg" ng-model="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" ng-model="confirmPassword" placeholder="Confirm">
                     </div>
                 </div>
 

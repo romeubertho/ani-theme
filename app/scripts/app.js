@@ -13,8 +13,27 @@ angular
     'ui.router',
     'ngAnimate'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
-    console.log(JSON.stringify($urlRouterProvider));
+  .constant('_', window._)
+  .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
+    $httpProvider.interceptors.push(['$q', '$location', '$window', function($q, $location, $window) {
+      return {
+            'request': function (config) {
+              debugger;
+                config.headers = config.headers || {};
+                if ($window.localStorage.token) {
+                    config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+                }
+                return config;
+            },
+            'responseError': function(response) {
+                if(response.status === 401 || response.status === 403) {
+                    $location.path('/signin');
+                }
+                return $q.reject(response);
+            }
+        };
+    }]);
+
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
     $urlRouterProvider.when('/account', '/account/overview');
 
@@ -30,7 +49,11 @@ angular
         url: '/login',
         parent: 'base',
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        data: {
+          authorization: false,
+          redirectTo: 'login'
+        }
       })
       .state('register', {
         url: '/register',
@@ -72,12 +95,20 @@ angular
         url: '/dashboard',
         parent: 'base',
         templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('overview', {
         url: '/overview',
         parent: 'dashboard',
-        templateUrl: 'views/dashboard/overview.html'
+        templateUrl: 'views/dashboard/overview.html',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('reports', {
         url: '/reports',
@@ -85,4 +116,11 @@ angular
         templateUrl: 'views/dashboard/reports.html'
       });
 
-  });
+  })
+  .run(function(_, $rootScope, $state, $window, Authorization) {
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+      if (!$window.localStorage.token && toState.data.authorization && toState.data.redirectTo) {
+        $state.go(toState.data.redirectTo);
+      }
+    });
+});
