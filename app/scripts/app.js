@@ -62,6 +62,12 @@ angular
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
+      .state('groups', {
+        url: '/groups',
+        parent: 'dashboard',
+        templateUrl: 'views/group/group.html',
+        controller: 'ProfileCtrl'
+      })
       .state('dashboard', {
         url: '/dashboard',
         parent: 'base',
