@@ -2,15 +2,16 @@ angular.module('yapp')
 .factory('GroupService', function ($http) {
 
     var factory = {};
-    var endpoint = 'http://trab-web-c4b3l3r4.c9users.io:8080';
+        // var endpoint = 'http://trab-web-c4b3l3r4.c9users.io:8080';
+        var endpoint = 'http://localhost';
 
-    factory.getUser = function ($username) {
-        return $http.get(endpoint + "/group/" + $username);
+    factory.getGroups = function ($data) {
+        return $http.post(endpoint + "/user/findgroups", $data);
     }
 
     factory.create = function ($data) {
         debugger;
-        return $http.post(endpoint + "/group/", $data);
+        return $http.post(endpoint + "/group/register", $data);
     }
 
     factory.edit = function ($data, $username) {

@@ -17,14 +17,12 @@ angular.module('yapp')
         }
 
         AccountService.signin(formData).then(function(res) {
-            debugger;
             if (res.type == false) {
               $scope.fail = true;
             } else {
               $scope.fail = false;
-              debugger;
                 $window.localStorage.token = res.data.token;
-                $window.localStorage['user'] = angular.toJson(res.data.user);
+                $window.localStorage['user'] = angular.toJson(res.data.user.username); //passa somente o usuário
                 $window.localStorage.authorized = true;
                 Authorization.authorized = true;
                 Authorization.token = $window.localStorage.token;

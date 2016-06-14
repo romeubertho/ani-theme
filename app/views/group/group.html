@@ -3,20 +3,45 @@
 	<h2>Group <small>Manager</small></h2>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Group 1</h1>
-			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
+			<h1>{{current_user}} groups</h1>
+			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
+			bower. Let's keep it real clean!<br /><br />
 			<p>
-				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
+				<a ng-click='new()' class="btn btn-primary btn-lg btn-outline btn-rounded">New</a>
 			</p>
+			<div class="check-element sample-show-hide" ng-show="button_new" style="clear:both;">
+				<div class="form-page">
+					<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+						<form ng-submit="register()">
+
+							<div class="form-content">
+								<div class="form-group">
+									<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="Group name">
+								</div>
+
+							</div>
+
+							<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Create</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-    <div class="jumbotron">
-		<div class="container">
-			<h1>Group 2!</h1>
-			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
-			<p>
-				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
-			</p>
+	<div ng-repeat="x in all">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>@{{x.name}}</h1>
+				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
+				bower. Let's keep it real clean!<br /><br />
+				<p>
+					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
+					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
+					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
+					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Remove</a>
+				</p>
+			</div>
 		</div>
 	</div>
 </div>

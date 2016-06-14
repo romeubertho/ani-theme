@@ -88,7 +88,7 @@ angular
         url: '/groups',
         parent: 'dashboard',
         templateUrl: 'views/group/group.html',
-        controller: 'ProfileCtrl'
+        controller: 'GroupCtrl'
       })
       .state('dashboard', {
         url: '/dashboard',
