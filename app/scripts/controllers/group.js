@@ -8,7 +8,6 @@ angular.module('yapp')
         $scope.button_new = false;
 
         GroupService.getGroups({ username: $scope.current_user }).then(function (user, err) {
-            console.log(user.data[0]);
             $scope.all = user.data[0].groups;
             $scope.user = user.data[0];
             console.log($scope.user);
@@ -16,11 +15,15 @@ angular.module('yapp')
             console.log('err');
         });
 
-        $scope.new = function () {
-            if ($scope.button_new == false)
-                $scope.button_new = true;
+        $scope.btFunction = function (name) {
+            if ($scope.button_mode != name)
+                $scope.button_mode = name;
             else
-                $scope.button_new = false;
+                $scope.button_mode = undefined;
+            console.log($scope.button_mode);
+        }
+        $scope.close = function () {
+            $scope.button_mode = undefined;
         }
 
         $scope.register = function () {
@@ -31,10 +34,10 @@ angular.module('yapp')
                     'subscribers': $scope.user.id
                 };
             GroupService.create(data).then(function (err, results) {
-                    $scope.button_new = false;
-                    $state.reload();
-                    // $scope.$watch();
-                    // $scope.$apply();
+                $scope.button_mode = undefined;
+                $state.reload();
+                // $scope.$watch();
+                // $scope.$apply();
             }, function (err) {
                 console.log('err');
             });

@@ -7,11 +7,13 @@
 			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
 			bower. Let's keep it real clean!<br /><br />
 			<p>
-				<a ng-click='new()' class="btn btn-primary btn-lg btn-outline btn-rounded">New</a>
+				<a ng-click='btFunction(current_user+"new group")' class="btn btn-primary btn-lg btn-outline btn-rounded">New</a>
 			</p>
-			<div class="check-element sample-show-hide" ng-show="button_new" style="clear:both;">
+			<div class="check-element sample-show-hide" ng-show="button_mode==current_user+'new group'" style="clear:both;">
 				<div class="form-page">
+					<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
 					<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+
 						<form ng-submit="register()">
 
 							<div class="form-content">
@@ -36,11 +38,71 @@
 				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
 				bower. Let's keep it real clean!<br /><br />
 				<p>
-					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
-					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
-					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
-					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Remove</a>
+					<a ng-click='btFunction(x.name+"add user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
+					<a ng-click='btFunction(x.name+"remove user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
+					<a ng-click='btFunction(x.name+"edit group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
+					<a ng-click='btFunction(x.name+"remove group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove group</a>
 				</p>
+				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'add user'" style="clear:both;">
+					<div class="form-page">
+						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
+						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+							<form ng-submit="register()">
+								<div class="form-content">
+									<div class="form-group">
+										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="User">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Add</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'remove user'" style="clear:both;">
+					<div class="form-page">
+						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
+						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+							<form ng-submit="removeUser()">
+								<div class="form-content">
+									<div class="form-group">
+										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="User">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Remove</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'edit group'" style="clear:both;">
+					<div class="form-page">
+						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
+						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+							<form ng-submit="register()">
+								<div class="form-content">
+									<div class="form-group">
+										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="Group name">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Edit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'remove group'" style="clear:both;">
+					<div class="form-page">
+						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
+						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+							<form ng-submit="register()">
+								<div class="form-content">
+									<div class="form-group">
+										<h2>Are you sure?</h2>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Yes!</button>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
