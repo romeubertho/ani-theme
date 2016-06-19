@@ -79,7 +79,7 @@ angular
         controller: 'AccountCtrl'
       })
       .state('profile', {
-        url: '/profile?username',
+        url: '/profile?uid',
         parent: 'dashboard',
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'

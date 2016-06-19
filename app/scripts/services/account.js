@@ -3,7 +3,7 @@ angular.module('yapp')
 
         var factory = {};
         // var endpoint = 'http://trab-web-c4b3l3r4.c9users.io:8080';
-        var endpoint = 'http://localhost';
+        var endpoint = 'http://localhost:1337';
         factory.getUser = function ($username) {
             return $http.get(endpoint + "/user/finder/" + $username);
         }

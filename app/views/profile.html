@@ -3,11 +3,33 @@
 	<h2>User Profile</h2>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Welcome {{user.username}}</h1>
+			<h1>Welcome</h1>
 			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have bower. Let's keep it real clean!<br /><br />
 			<p>
 				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
 			</p>
+			<div class="form-group">
+				<div class="panel-heading">New Post</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<textarea ng-model="message" class="form-control" rows="5" id="comment"></textarea>
+					</div>
+					<div class="panel-footer">
+					</div>
+				</div>
+			</div>
+			<div ng-repeat="message in messages">
+				<div class="panel-heading">@{{message.owner.username}}</div>
+				<div class="panel panel-default">
+				<div class="panel-body">
+					{{message.message}}
+				</div>
+				<div class="panel-footer">
+					<ul ng-repeat="topic in message.topics">
+						<li><a ui-sref="{{topic}}">{{topic}}</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
