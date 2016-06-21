@@ -1,15 +1,38 @@
-<div>
-	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Edit new Account</a>
-	<div ng-controller="AccountCtrl">
-		<form>
-			<input class="add-input" type="text" placeholder="Your username" ng-model="user.username" ng-readonly="user.username"/><br/>
-			<input class="add-input" type="text" placeholder="Your name" ng-model="user.name"/><br/>
-			<input class="add-input" type="password" ng-model="user.password"/><br/>
-			<input class="add-input" type="text" ng-model="user.birthday" ng-readonly="user.birthday" onblur="(this.type='text')"/><br/>
-			<input class="add-input" type="text" ng-model="user.description"/><br/>
-			<button ng-click='edit()'>Register</button>
-		</form>
-		<hr>
-		{{greeting}}
+<div class="jumbotron">
+		<div class="container">
+			<h1>Edit {{user.username}} account</h1>
+			LALALALALALALALLA L ALLALLLALA LL L L LALAL L LAL LA LA L ALA LA LA LLA L ALA L<br /><br />
+			<p>
+			</p>
+				<div class="form-page">
+					<!--<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">-->
+
+						<form ng-submit="edit()">
+
+							<div class="form-content">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" ng-model="user.username" ng-readonly="user.username"/><br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" ng-model="user.name"/><br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" ng-model="user.birthday" ng-readonly="user.birthday" onblur="(this.type='text')"/><br/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" ng-model="user.description" placeholder="Description">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" ng-model="user.password" placeholder="Password">
+                    </div>
+                </div>
+
+							<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Edit</button> 
+											<a ng-click='btFunction(current_user+"new group")' class="btn btn-danger btn-sm btn-outline btn-rounded">Remove Account</a>
+
+						</form>
+					<!--</div>-->
+				</div>
+		</div>
 	</div>
-</div>
+

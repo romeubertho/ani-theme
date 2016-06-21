@@ -6,6 +6,9 @@ angular.module('yapp')
         $scope.user = {};
         $scope.current_user = AccountService.getCurrentUser();
         $scope.button_new = false;
+        $scope.username = {
+        all: {
+        }};
 
         GroupService.getGroups({ username: $scope.current_user }).then(function (user, err) {
             $scope.all = user.data[0].groups;
@@ -53,4 +56,24 @@ angular.module('yapp')
                 console.log('err');
             });
         };
+        $scope.subscribe = function ($groupID) {
+            console.log($groupID);
+            var username=$scope.username.all[$groupID];
+            //console.log(lala[$teste]);
+            AccountService.getUser(username).then(function (user, err) {
+                debugger;
+                var data = {
+                "Subscribing": user.data.userData.id,
+                "ToSubscribe": $groupID
+            };
+                GroupService.subscribeUser(data).then(function (err, results) {
+                    $state.reload();
+                }, function (err) {
+                    console.log(err);
+                });
+            }, function (err) {
+                console.log(err);
+            });
+
+        }
     });

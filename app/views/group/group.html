@@ -31,41 +31,41 @@
 			</div>
 		</div>
 	</div>
-	<div ng-repeat="x in all">
+	<div ng-repeat="group in all">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>@{{x.name}}</h1>
+				<h1>{{group.name}}</h1>
 				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
 				bower. Let's keep it real clean!<br /><br />
 				<p>
-					<a ng-click='btFunction(x.name+"add user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
-					<a ng-click='btFunction(x.name+"remove user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
-					<a ng-click='btFunction(x.name+"edit group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
-					<a ng-click='btFunction(x.name+"remove group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove group</a>
+					<a ng-click='btFunction(group.name+"add user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
+					<a ng-click='btFunction(group.name+"remove user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
+					<a ng-click='btFunction(group.name+"edit group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
+					<a ng-click='btFunction(group.name+"remove group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove group</a>
 				</p>
-				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'add user'" style="clear:both;">
+				<div class="check-element sample-show-hide" ng-show="button_mode==group.name+'add user'" style="clear:both;">
 					<div class="form-page">
 						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
 						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-							<form ng-submit="register()">
+							<form>
 								<div class="form-content">
 									<div class="form-group">
-										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="User">
+										<input type="text" class="form-control input-underline input-lg" ng-model="username.all[group.id]" placeholder="User">
 									</div>
 								</div>
-								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Add</button>
+								<button ng-click='subscribe(group.id)' class="btn btn-white btn-outline btn-lg btn-rounded">Add</button>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'remove user'" style="clear:both;">
+				<div class="check-element sample-show-hide" ng-show="button_mode==group.name+'remove user'" style="clear:both;">
 					<div class="form-page">
 						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
 						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 							<form ng-submit="removeUser()">
 								<div class="form-content">
 									<div class="form-group">
-										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="User">
+										<input type="text" class="form-control input-underline input-lg" ng-model="username" placeholder="User">
 									</div>
 								</div>
 								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Remove</button>
@@ -73,14 +73,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'edit group'" style="clear:both;">
+				<div class="check-element sample-show-hide" ng-show="button_mode==group.name+'edit group'" style="clear:both;">
 					<div class="form-page">
 						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
 						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 							<form ng-submit="register()">
 								<div class="form-content">
 									<div class="form-group">
-										<input type="text" class="form-control input-underline input-lg" ng-model="name" placeholder="Group name">
+										<input type="text" class="form-control input-underline input-lg" ng-model="groupName" placeholder="Group name">
 									</div>
 								</div>
 								<button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Edit</button>
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="check-element sample-show-hide" ng-show="button_mode==x.name+'remove group'" style="clear:both;">
+				<div class="check-element sample-show-hide" ng-show="button_mode==group.name+'remove group'" style="clear:both;">
 					<div class="form-page">
 						<a ng-click='close()' class="btn btn-primary btn-lg btn-outline btn-rounded">X</a>
 						<div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">

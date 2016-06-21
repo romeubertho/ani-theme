@@ -1,12 +1,11 @@
 <div>
 	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Reports</a>
 	<h2>User Profile</h2>
-	<div ng-repeat="x in all">
+	<div ng-repeat="profile in all">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Welcome {{x.username}}</h1>
-				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
-				bower. Let's keep it real clean!<br /><br />
+				<h1>Welcome <a ui-sref="profile({uid: profile.id})">{{profile.username}}</a></h1>
+				{{profile.description}}<br /><br />
 				<p>
 					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
 				</p>

@@ -7,6 +7,10 @@ angular.module('yapp')
         factory.getUser = function ($username) {
             return $http.get(endpoint + "/user/finder/" + $username);
         }
+        
+        factory.getUserByID = function ($id) {
+            return $http.get(endpoint + "/user/" + $id);
+        }
 
         factory.create = function ($data) {
             return $http.post(endpoint + "/user/register/", $data);
@@ -14,6 +18,10 @@ angular.module('yapp')
 
         factory.edit = function ($data, $username) {
             return $http.put(endpoint + "/user/" + $username, $data);
+        }
+
+        factory.remove = function ($data, $id) {
+            return $http.delete(endpoint + "/user/" + $id);
         }
 
         factory.signin = function ($data) {
@@ -26,6 +34,10 @@ angular.module('yapp')
             var currentUser = $window.localStorage.user;
             var split = currentUser.split('"');
             currentUser=split[1];
+            return currentUser;
+        }
+        factory.getCurrentUserID = function () {
+            var currentUser = $window.localStorage.userID;
             return currentUser;
         }
 

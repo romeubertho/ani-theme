@@ -19,5 +19,14 @@ angular.module('yapp')
         return $http.put(endpoint + "/group/", $data);
     }
 
+    factory.subscribeUser = function ($data) {
+            return $http.post(endpoint + '/user/' + $data.Subscribing + '/subscriptions/' + $data.ToSubscribe);
+        }
+
+        factory.unsubscribeUser = function ($data) {
+            debugger;
+            return $http.delete(endpoint + '/user/' + $data.Subscribing + '/following/' + $data.ToSubscribe);
+        }
+
     return factory;
 });

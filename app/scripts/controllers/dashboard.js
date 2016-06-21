@@ -8,8 +8,10 @@
  * Controller of yapp
  */
 angular.module('yapp')
-  .controller('DashboardCtrl', function($scope, $state) {
+  .controller('DashboardCtrl', function ($scope, $state, AccountService) {
 
     $scope.$state = $state;
+    $scope.CurrentUser = AccountService.getCurrentUser();
+    $scope.CurrentUserID = AccountService.getCurrentUserID();
 
   });

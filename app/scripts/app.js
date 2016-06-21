@@ -33,8 +33,8 @@ angular
         };
     }]);
 
-    $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-    $urlRouterProvider.when('/account', '/account/overview');
+    $urlRouterProvider.when('/dashboard', '/dashboard/overview'); 
+    //$urlRouterProvider.when('/account', '/account/overview');
 
     $urlRouterProvider.otherwise('/login');
 
@@ -82,12 +82,23 @@ angular
         url: '/profile?uid',
         parent: 'dashboard',
         templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        resolve:{
+          checkFollowing: function(ProfileService){
+            return ProfileService.checkFollowing();
+          }
+        }
       })
       .state('groups', {
         url: '/groups',
         parent: 'dashboard',
         templateUrl: 'views/group/group.html',
+        controller: 'GroupCtrl'
+      })
+      .state('group-page', {
+        url: '/groups?uid',
+        parent: 'dashboard',
+        templateUrl: 'views/group/grouppage.html',
         controller: 'GroupCtrl'
       })
       .state('dashboard', {

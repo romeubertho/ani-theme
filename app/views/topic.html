@@ -1,21 +1,12 @@
 <div>
 	<div class="jumbotron">
 		<div class="container">
-			<div class="check-element sample-show-hide" ng-show="button_mode=='Follow'" style="clear:both;">
-				<a ng-click='followUser()' class="pull-right btn btn-primary btn-outline btn-rounded">Follow</a>
-			</div>
-			<div class="check-element sample-show-hide" ng-show="button_mode=='Unfollow'" style="clear:both;">
-				<a ng-click='unfollowUser()' class="pull-right btn btn-primary btn-outline btn-rounded">Unfollow</a>
-			</div>
-			<h1>{{profileVisited.name}}
-				<a ui-sref="account-edit" class=" check-element sample-show-hide btn btn-primary btn-outline btn-rounded" ng-show="button_mode=='Edit'"
-					style="clear:both;">Edit</a>
-			</h1>
-
+			<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Follow</a>
+			<h1>{{profileVisited.name}}</h1>
 			<h2>@{{profileVisited.username}}</h2>
 			{{profileVisited.description}}<br /><br />
 			<p>
-				<!--<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>-->
+				<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>
 			</p>
 			<div class="form-group">
 				<div class="panel-heading">New Post</div>
@@ -38,6 +29,7 @@
 					<div class="panel-heading">
 						<h2 class="brand">@{{message.owner.username}}</h2>
 					</div>
+
 					<div class="panel-body">
 						{{message.message}}
 					</div>

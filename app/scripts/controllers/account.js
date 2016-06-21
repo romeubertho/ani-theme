@@ -9,10 +9,8 @@ angular.module('yapp')
         $scope.current_user = AccountService.getCurrentUser();
 
         AccountService.getUser($scope.current_user).then(function (user, err) {
-            console.log('success');
             $scope.user = user.data.userData;
             $scope.data = user.data.userData;
-            console.log($scope.data);
         }, function (err) {
             console.log('err');
         });
@@ -40,11 +38,19 @@ angular.module('yapp')
         };
 
         $scope.edit = function () {
-
-            debugger;
             AccountService.edit($scope.user, $scope.user.id).then(function (user, err) {
-                debugger;
                 $scope.user
+                alert("Edit succesfully!")
+                $state.reload();
+            }, function (err) {
+                console.log('err');
+            });
+        };
+        $scope.removeAccount = function () {
+            AccountService.remove($scope.user, $scope.user.id).then(function (user, err) {
+                $scope.user
+                alert("Edit succesfully!")
+                $state.reload();
             }, function (err) {
                 console.log('err');
             });
