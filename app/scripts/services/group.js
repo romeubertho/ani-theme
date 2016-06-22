@@ -16,6 +16,12 @@ angular.module('yapp')
     factory.getMessages = function ($data) {
         return $http.post(endpoint + "/group/"+$data);
     }
+    factory.getMessages2 = function ($data) {
+        var a={
+            'id':$data
+        }
+        return $http.post(endpoint + "/group/getmessagess",a);
+    }
 
     factory.create = function ($data) {
         debugger;

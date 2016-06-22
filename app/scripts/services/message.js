@@ -18,6 +18,12 @@ angular.module('yapp')
         debugger;
         return $http.put(endpoint + "/message/", $data);
     }
+    factory.timeline=function(){
+        var data={
+            "id":1
+        }
+        return $http.post(endpoint + "/user/timeline/", data);
+    }
 
     return factory;
 });
