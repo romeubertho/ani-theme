@@ -1084,6 +1084,10 @@ a {
   color: #3ca2e0;
   text-decoration: none;
 }
+.a-white{
+    color: #fff;
+  text-decoration: none;
+}
 a:hover,
 a:focus {
   color: #1c7ab3;

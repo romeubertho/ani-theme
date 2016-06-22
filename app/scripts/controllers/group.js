@@ -9,6 +9,12 @@ angular.module('yapp')
         $scope.username = {
         all: {
         }};
+        $scope.usernamer = {
+        all: {
+        }};
+        $scope.groupName = {
+        all: {
+        }};
 
         GroupService.getGroups({ username: $scope.current_user }).then(function (user, err) {
             $scope.all = user.data[0].groups;
@@ -46,16 +52,39 @@ angular.module('yapp')
             });
         };
 
-        $scope.edit = function () {
-
-            debugger;
-            GroupService.edit($scope.user, $scope.user.id).then(function (user, err) {
+        $scope.edit = function ($groupID) {
+             var data = "@"+$scope.groupName.all[$groupID]; 
+            GroupService.find(data).then(function (user, err) {
                 debugger;
-                $scope.user
+                if(user.data.length==0)
+                {
+                    var dataToEdit = {
+                        "name":"@"+$scope.groupName.all[$groupID]
+                    };
+                    GroupService.edit(dataToEdit,$groupID).then(function (err, results) {
+                    $state.reload();
+                }, function (err) {
+                    alert("Edit done!");
+                    console.log(err);
+                });
+                }
+                
             }, function (err) {
-                console.log('err');
+                alert("User Not found!");
+                console.log(err);
             });
         };
+
+        $scope.remove = function ($groupID) {
+           GroupService.removeGroup($groupID).then(function (err, results) {
+                    alert("Group removed successfully!");
+                    $state.reload();
+                }, function (err) {
+                    alert("ERROR!");
+                    console.log(err);
+                });
+        };
+
         $scope.subscribe = function ($groupID) {
             console.log($groupID);
             var username=$scope.username.all[$groupID];
@@ -69,9 +98,33 @@ angular.module('yapp')
                 GroupService.subscribeUser(data).then(function (err, results) {
                     $state.reload();
                 }, function (err) {
+                    alert("User already subscribed!");
                     console.log(err);
                 });
             }, function (err) {
+                alert("User Not found!");
+                console.log(err);
+            });
+
+        }
+        $scope.unsubscribeUser = function ($groupID) {
+            console.log($groupID);
+            var username=$scope.usernamer.all[$groupID];
+            //console.log(lala[$teste]);
+            AccountService.getUser(username).then(function (user, err) {
+                debugger;
+                var data = {
+                "Subscribing": user.data.userData.id,
+                "ToSubscribe": $groupID
+            };
+                GroupService.unsubscribeUser(data).then(function (err, results) {
+                    $state.reload();
+                }, function (err) {
+                    alert("User already unsubscribed!");
+                    console.log(err);
+                });
+            }, function (err) {
+                alert("User Not found!");
                 console.log(err);
             });
 

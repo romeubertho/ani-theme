@@ -96,10 +96,10 @@ angular
         controller: 'GroupCtrl'
       })
       .state('group-page', {
-        url: '/groups?uid',
+        url: '/groups/group?uid',
         parent: 'dashboard',
         templateUrl: 'views/group/grouppage.html',
-        controller: 'GroupCtrl'
+        controller: 'GroupPageCtrl'
       })
       .state('dashboard', {
         url: '/dashboard',

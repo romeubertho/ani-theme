@@ -1,0 +1,53 @@
+<div>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="check-element sample-show-hide" ng-show="button_mode=='Follow'" style="clear:both;">
+				<a ng-click='followUser()' class="pull-right btn btn-primary btn-outline btn-rounded">Follow</a>
+			</div>
+			<div class="check-element sample-show-hide" ng-show="button_mode=='Unfollow'" style="clear:both;">
+				<a ng-click='unfollowUser()' class="pull-right btn btn-primary btn-outline btn-rounded">Unfollow</a>
+			</div>
+			<h1>{{groupVisited.name}}
+				<a ui-sref="account-edit" class=" check-element sample-show-hide btn btn-primary btn-outline btn-rounded" ng-show="button_mode=='Edit'"
+					style="clear:both;">Edit</a>
+			</h1>
+
+			<!--<h2>@{{groupVisited.username}}</h2>-->
+			<!--{{profileVisited.description}}<br /><br />-->
+			<p>
+				<!--<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>-->
+			</p>
+			<div class="form-group"> 
+				<div class="panel-heading">New Post</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<textarea ng-model="message" class="form-control" rows="5" id="comment"></textarea>
+						<a ng-click='createMessage()' class="pull-right btn btn-primary btn-lg btn-outline btn-rounded">Post it!</a>
+					</div>
+					<div class="panel-footer">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div ng-repeat="message in messages">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="brand"><a class="a-white" ui-sref="profile({uid: message.creator.id})">@{{message.creator.username}}</a></h2>
+					</div>
+					<div class="panel-body">
+						{{message.message}}
+					</div>
+					<div class="panel-footer">
+						<ul ng-repeat="topic in message.topics">
+							<li><a ui-sref="{{topic}}">{{topic}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
