@@ -5,14 +5,12 @@ angular.module('yapp')
         // var endpoint = 'http://trab-web-c4b3l3r4.c9users.io:8080';
         var endpoint = 'http://localhost:1337';
         factory.getMessages = function ($id) {
-            debugger;
             return $http.get(endpoint + '/message/owner/' + $id);
         }
         factory.follow = function ($data) {
             return $http.post(endpoint + '/user/' + $data.Following + '/following/' + $data.ToFollow);
         }
         factory.unfollow = function ($data) {
-            debugger;
             return $http.delete(endpoint + '/user/' + $data.Following + '/following/' + $data.ToFollow);
         }
         factory.checkFollowing = function () { // retorna uma promisse que deve ser tratada no controller

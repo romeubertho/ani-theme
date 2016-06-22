@@ -13,5 +13,12 @@ angular.module('yapp')
     $scope.$state = $state;
     $scope.CurrentUser = AccountService.getCurrentUser();
     $scope.CurrentUserID = AccountService.getCurrentUserID();
+    $scope.user = {};
+
+    AccountService.getUserByID($scope.CurrentUserID).then(function (user, err) {
+        $scope.user = user.data;
+    }, function (err) {
+        console.log(err);
+    });
 
   });

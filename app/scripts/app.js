@@ -11,7 +11,9 @@
 angular
   .module('yapp', [
     'ui.router',
-    'ngAnimate'
+    'ngAnimate',
+    'flow',
+    'ngFileUpload'
   ])
   .constant('_', window._)
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {

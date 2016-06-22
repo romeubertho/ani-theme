@@ -2,7 +2,6 @@
 
 angular.module('yapp')
     .controller('ProfileCtrl', function ($scope, $rootScope, $state, $stateParams, AccountService, ProfileService, MessageService) {
-        debugger;
         $scope.currentUser = AccountService.getCurrentUser();
         $scope.currentUserID = AccountService.getCurrentUserID();
         $scope.profileFollowing;
@@ -15,7 +14,6 @@ angular.module('yapp')
         var message = { owner: "", message: "" }
 
         ProfileService.getMessages($stateParams.uid).then(function (messages, err) {
-            debugger;
             $scope.messages = messages.data;
         }, function (err) {
             console.log('err');

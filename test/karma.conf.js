@@ -19,6 +19,10 @@ module.exports = function(config) {
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/ui-router/release/angular-ui-router.js',
       '../bower_components/angular-animate/angular-animate.js',
+      '../bower_components/flow.js/dist/flow.js',
+      '../bower_components/ng-flow/dist/ng-flow.js',
+      '../bower_components/ng-file-upload/ng-file-upload.js',
+      '../bower_components/ng-file-upload-shim/ng-file-upload-shim.js',
       // endbower
       '../app/scripts/**/*.js',
       //'../test/mock/**/*.js',
