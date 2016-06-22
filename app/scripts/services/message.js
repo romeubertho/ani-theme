@@ -10,13 +10,14 @@ angular.module('yapp')
     }
 
     factory.create = function ($data) {
-        debugger;
         return $http.post(endpoint + "/message/", $data);
     }
 
     factory.edit = function ($data, $username) {
-        debugger;
         return $http.put(endpoint + "/message/", $data);
+    }
+    factory.remove = function ($data) {
+        return $http.delete(endpoint + "/message/"+ $data);
     }
 
     return factory;
