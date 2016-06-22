@@ -68,12 +68,6 @@ angular
         templateUrl: 'views/account/overview.html',
         controller: 'AccountCtrl'
       })
-      .state('account-create', {
-        url: '/account/create',
-        parent: 'dashboard',
-        templateUrl: 'views/account/create.html',
-        controller: 'AccountCtrl'
-      })
       .state('account-edit', {
         url: '/account/edit',
         parent: 'dashboard',
@@ -121,11 +115,6 @@ angular
           authorization: true,
           redirectTo: 'login'
         }
-      })
-      .state('reports', {
-        url: '/reports',
-        parent: 'dashboard',
-        templateUrl: 'views/dashboard/reports.html'
       });
 
   })

@@ -41,6 +41,7 @@ angular.module('yapp')
         });
         AccountService.getAll().then(function (user, err) {
             $scope.all = user.data;
+            console.log($scope.all);
         }, function (err) {
             console.log('err');
         });
