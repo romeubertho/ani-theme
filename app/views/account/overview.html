@@ -1,10 +1,11 @@
 <div>
-	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Reports</a>
-	<h2>User Profile</h2>
-	<div ng-repeat="profile in all">
+	<h2>Users</h2>
+<label>Search: <input ng-model="search.$"></label>
+
+	<div ng-repeat="profile in all | limitTo : 10 : 0 | filter:search:strict">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Welcome <a ui-sref="profile({uid: profile.id})">{{profile.username}}</a></h1>
+				<h1><a ui-sref="profile({uid: profile.id})">{{profile.username}}</a></h1>
 				{{profile.description}}<br /><br />
 				<p>
 					<a class="btn btn-primary btn-lg btn-outline btn-rounded">Learn more</a>

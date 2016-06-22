@@ -14,7 +14,10 @@ angular.module('yapp')
     }
 
     factory.getMessages = function ($data) {
-        return $http.post(endpoint + "/group/"+$data);
+        var json={
+            "id":$data 
+        }
+        return $http.post(endpoint + "/group/getmessages",json);
     }
     factory.getMessages2 = function ($data) {
         var a={
@@ -24,22 +27,18 @@ angular.module('yapp')
     }
 
     factory.create = function ($data) {
-        debugger;
         return $http.post(endpoint + "/group/register", $data);
     }
 
     factory.edit = function ($data,$id) {
-        debugger;
         return $http.put(endpoint + "/group/"+$id, $data);
     }
 
     factory.removeGroup = function ($id) {
-        debugger;
         return $http.delete(endpoint + "/group/"+$id);
     }
     
     factory.find = function ($data) {
-        debugger;
         return $http.get(endpoint + "/group?name="+ $data);
     }
 
@@ -48,7 +47,6 @@ angular.module('yapp')
         }
 
         factory.unsubscribeUser = function ($data) {
-            debugger;
             return $http.delete(endpoint + '/user/' + $data.Subscribing + '/subscriptions/' + $data.ToSubscribe);
         }
 

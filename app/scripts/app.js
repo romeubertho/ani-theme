@@ -11,7 +11,9 @@
 angular
   .module('yapp', [
     'ui.router',
-    'ngAnimate'
+    'ngAnimate',
+    'flow',
+    'ngFileUpload'
   ])
   .constant('_', window._)
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
@@ -66,12 +68,6 @@ angular
         templateUrl: 'views/account/overview.html',
         controller: 'AccountCtrl'
       })
-      .state('account-create', {
-        url: '/account/create',
-        parent: 'dashboard',
-        templateUrl: 'views/account/create.html',
-        controller: 'AccountCtrl'
-      })
       .state('account-edit', {
         url: '/account/edit',
         parent: 'dashboard',
@@ -119,11 +115,6 @@ angular
           authorization: true,
           redirectTo: 'login'
         }
-      })
-      .state('reports', {
-        url: '/reports',
-        parent: 'dashboard',
-        templateUrl: 'views/dashboard/reports.html'
       });
 
   })

@@ -2,7 +2,6 @@
 
 angular.module('yapp')
     .controller('ProfileCtrl', function ($scope, $rootScope, $state, $stateParams, AccountService, ProfileService, MessageService) {
-        debugger;
         $scope.currentUser = AccountService.getCurrentUser();
         $scope.currentUserID = AccountService.getCurrentUserID();
         $scope.profileFollowing;
@@ -15,7 +14,6 @@ angular.module('yapp')
         var message = { owner: "", message: "" }
 
         ProfileService.getMessages($stateParams.uid).then(function (messages, err) {
-            debugger;
             $scope.messages = messages.data;
         }, function (err) {
             console.log('err');
@@ -36,17 +34,19 @@ angular.module('yapp')
                 $scope.profileFollowing = false;
                 $scope.button_mode = "Follow";
             }
-            else{
+            else {
                 $scope.button_mode = undefined;
-                if(AccountService.getCurrentUserID() == $stateParams.uid)
-                $scope.button_mode = "Edit";
+                if (AccountService.getCurrentUserID() == $stateParams.uid)
+                    $scope.button_mode = "Edit";
             }
-            console.log($scope.button_mode);
+            //console.log($scope.button_mode);
         }, function (err) {
             console.log(err);
         });
 
         $scope.createMessage = function () {
+            if ($scope.currentUserID != $scope.profileVisited.id)
+                $scope.message = $scope.message + "  @" + $scope.profileVisited.username;
             var data = {
                 "owner": $scope.currentUserID,
                 "message": $scope.message
@@ -79,4 +79,12 @@ angular.module('yapp')
                 console.log(err);
             });
         }
+        $scope.removeMessage = function ($messageID) {
+            MessageService.remove($messageID).then(function (user, err) {
+                alert("Message removed succesfully!")
+                $state.reload();
+            }, function (err) {
+                console.log('err');
+            });
+        };
     });

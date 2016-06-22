@@ -4,15 +4,15 @@
       <div class="col-sm-3 col-md-2 sidebar">
 
        <div class="text-center">
-        <h2 class="brand">Ani Theme <small><a class="btn btn-white btn-sm btn-outline btn-rounded">Profile</a></small></h2>
-        <img src="images/brad.jpg" class="user-avatar" width="125"/><br />
+        <h2 class="brand">Bwitter</h2>
+        <img src="http://localhost:1337/images/{{user.profilePhoto}}" class="user-avatar" width="125"/><br />
         <a ui-sref="login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>
       </div>
 
       <ul class="nav nav-sidebar">
         <li ng-class="{active: $state.includes('overview')}"><a ui-sref="overview">Overview <span class="sr-only">(current)</span></a></li>
         <li ng-class="{active: $state.includes('profile')}"><a ui-sref="profile({uid: CurrentUserID})">Profile</a></li>
-        <li ng-class="{active: $state.includes('account')}"><a ui-sref="account">Account</a></li>
+        <li ng-class="{active: $state.includes('account')}"><a ui-sref="account">Users</a></li>
         <li ng-class="{active: $state.includes('groups')}"><a ui-sref="groups">Groups</a></li>
       </ul>
 

@@ -26,7 +26,6 @@ app.controller('RegisterCtrl', function ($scope, $location, AccountService) {
                     'description': $scope.description
                 };
             AccountService.create(data).then(function (err, results) {
-                debugger;
                 console.log('success');
                 alert("User registered successfully")
                 $location.path('/login');

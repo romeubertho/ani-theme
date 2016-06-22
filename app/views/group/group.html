@@ -8,6 +8,7 @@
 			bower. Let's keep it real clean!<br /><br />
 			<p>
 				<a ng-click='btFunction(current_user+"new group")' class="btn btn-primary btn-lg btn-outline btn-rounded">New</a>
+				<label class="pull-right">Search: <input ng-model="search.$"></label>
 			</p>
 			<div class="check-element sample-show-hide" ng-show="button_mode==current_user+'new group'" style="clear:both;">
 				<div class="form-page">
@@ -31,13 +32,13 @@
 			</div>
 		</div>
 	</div>
-	<div ng-repeat="group in all">
+	<div ng-repeat="group in all | limitTo : 10 : 0 | filter:search:strict">
 		<div class="jumbotron">
 			<div class="container">
 				<h1> <a ui-sref="group-page({uid: group.id})">{{group.name}}</a></h1>
 				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
 				bower. Let's keep it real clean!<br /><br />
-				<p>
+				<p class="check-element sample-show-hide" ng-show="button_functions==group.creator" style="clear:both;">
 					<a ng-click='btFunction(group.name+"add user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
 					<a ng-click='btFunction(group.name+"remove user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>
 					<a ng-click='btFunction(group.name+"edit group")' class="btn btn-primary btn-lg btn-outline btn-rounded">Edit</a>
