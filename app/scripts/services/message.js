@@ -25,6 +25,9 @@ angular.module('yapp')
     factory.remove = function ($data) {
         return $http.delete(endpoint + "/message/"+ $data);
     }
+    factory.likeMessage = function ($data) {
+        return $http.post(endpoint + "/message/likemessage", $data);
+    }
 
     return factory;
 });

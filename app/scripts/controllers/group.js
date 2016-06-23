@@ -22,6 +22,13 @@ angular.module('yapp')
         GroupService.getGroups({ username: $scope.current_user }).then(function (user, err) {
             console.log(user);
             $scope.all = user.data[0].subscriptions;
+            $scope.all.sort(function (a, b) {
+                var keyA = new String(a.name);
+                var keyB = new String(b.name);
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
             $scope.user = user.data[0];
             $scope.button_functions=$scope.user.id;
             console.log($scope.user);

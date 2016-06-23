@@ -16,17 +16,16 @@ angular.module('yapp')
         $scope.upload = function (file) {
             Upload.upload({
                 url: 'http://localhost:1337/user/upload',
-                data: {image: file}
+                data: { image: file }
             }).then(function (resp) {
-                if(resp.data.localFileName) $scope.user.profilePhoto = resp.data.localFileName;
+                if (resp.data.localFileName) $scope.user.profilePhoto = resp.data.localFileName;
                 return;
             }, function (resp) {
                 console.log(resp);
                 return;
             }, function (evt) {
                 $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                if($scope.progressPercentage > 99)
-                {
+                if ($scope.progressPercentage > 99) {
                     $scope.progressPercentageClass = 'progress-bar-success';
                     $scope.uploadLabel = "Photo uploaded"
                 }
@@ -41,7 +40,13 @@ angular.module('yapp')
         });
         AccountService.getAll().then(function (user, err) {
             $scope.all = user.data;
-            console.log($scope.all);
+            $scope.all.sort(function (a, b) {
+                var keyA = new String(a.username);
+                var keyB = new String(b.username);
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
         }, function (err) {
             console.log('err');
         });

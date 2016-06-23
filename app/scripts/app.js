@@ -65,14 +65,22 @@ angular
       .state('account', {
         url: '/account',
         parent: 'dashboard',
-        templateUrl: 'views/account/overview.html',
-        controller: 'AccountCtrl'
+        templateUrl: 'views/account/users.html',
+        controller: 'AccountCtrl',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('account-edit', {
         url: '/account/edit',
         parent: 'dashboard',
         templateUrl: 'views/account/edit.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('profile', {
         url: '/profile?uid',
@@ -83,19 +91,31 @@ angular
           checkFollowing: function(ProfileService){
             return ProfileService.checkFollowing();
           }
+        },
+        data: {
+          authorization: true,
+          redirectTo: 'login'
         }
       })
       .state('groups', {
         url: '/groups',
         parent: 'dashboard',
         templateUrl: 'views/group/group.html',
-        controller: 'GroupCtrl'
+        controller: 'GroupCtrl',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('group-page', {
         url: '/groups/group?uid',
         parent: 'dashboard',
         templateUrl: 'views/group/grouppage.html',
-        controller: 'GroupPageCtrl'
+        controller: 'GroupPageCtrl',
+        data: {
+          authorization: true,
+          redirectTo: 'login'
+        }
       })
       .state('dashboard', {
         url: '/dashboard',
@@ -111,6 +131,7 @@ angular
         url: '/overview',
         parent: 'dashboard',
         templateUrl: 'views/dashboard/overview.html',
+        controller: 'MessageCtrl',
         data: {
           authorization: true,
           redirectTo: 'login'

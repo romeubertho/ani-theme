@@ -37,12 +37,13 @@
 			<div class="container">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
+					<img src="http://localhost:1337/images/{{message.owner.profilePhoto}}" class="brand user-avatar2 pull-right" width="125"/>
+
 						<h2 class="brand">@{{message.owner.username}}
 						<button ng-click='edit(message.id)' class="btn btn-white btn-outline btn-sm btn-rounded">Edit</button>
 						<button ng-click='removeMessage(message.id)' class="pull-right btn btn-danger btn-sm btn-outline btn-rounded ">X</button>
-
 						</h2>
-
+						  
 					</div>
 					<div class="panel-body">
 						{{message.message}}
@@ -53,6 +54,8 @@
 						</ul>
 					</div>
 				</div>
+				<button ng-click='like(message.id)' class="pull-right btn btn-danger btn-sm btn-outline btn-rounded ">X</button>
+				<button ng-click='dislike(message.id)' class="pull-right btn btn-success btn-outline btn-sm btn-rounded">Like</button>
 			</div>
 		</div>
 	</div>

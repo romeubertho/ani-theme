@@ -1,0 +1,25 @@
+<div>
+	<h2>Users <small>Bwitter</small></h2>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Finding new friends?</h1>
+
+			Search for new users and make great friendships!<br /><br />
+			<label class ="pull-right">Search: <input ng-model="search.$"></label>
+		</div>
+	</div>
+
+<!--| limitTo : 10 : 0-->
+
+	<div ng-repeat="profile in all | filter:search:strict">
+		<div class="jumbotron">
+			<div class="container">
+				<img src="http://localhost:1337/images/{{profile.profilePhoto}}" class="user-avatar3 pull-right" width="125"/><br />
+				<h1><a ui-sref="profile({uid: profile.id})">{{profile.username}}</a></h1>
+				{{profile.description}}<br /><br />
+				<p>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

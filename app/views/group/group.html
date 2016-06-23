@@ -1,11 +1,9 @@
 <div>
-	<a ui-sref="reports" class="pull-right btn btn-primary btn-outline btn-rounded">Reports</a>
 	<h2>Group <small>Manager</small></h2>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>{{current_user}} groups</h1>
-			I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
-			bower. Let's keep it real clean!<br /><br />
+			<h1>{{current_user}} Groups</h1>
+			Manage all your groups, take a look what they are saying. Stay always in touch!<br /><br />
 			<p>
 				<a ng-click='btFunction(current_user+"new group")' class="btn btn-primary btn-lg btn-outline btn-rounded">New</a>
 				<label class="pull-right">Search: <input ng-model="search.$"></label>
@@ -32,12 +30,12 @@
 			</div>
 		</div>
 	</div>
-	<div ng-repeat="group in all | limitTo : 10 : 0 | filter:search:strict">
+	<!--| limitTo : 10 : 0-->
+	<div ng-repeat="group in all  | filter:search:strict">
 		<div class="jumbotron">
 			<div class="container">
 				<h1> <a ui-sref="group-page({uid: group.id})">{{group.name}}</a></h1>
-				I don't want to bloat this Ani Theme Free Edition AngularJS Admin theme with a lot of plugins. To install plugins we have
-				bower. Let's keep it real clean!<br /><br />
+				adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien.!<br /><br />
 				<p class="check-element sample-show-hide" ng-show="button_functions==group.creator" style="clear:both;">
 					<a ng-click='btFunction(group.name+"add user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Add user</a>
 					<a ng-click='btFunction(group.name+"remove user")' class="btn btn-primary btn-lg btn-outline btn-rounded">Remove user</a>

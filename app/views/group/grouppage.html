@@ -47,6 +47,8 @@
 						</ul>
 					</div>
 				</div>
+                <button ng-click='like(message.id)' class="pull-right btn btn-danger btn-sm btn-outline btn-rounded ">X {{message.dislikes.length}}</button>
+				<button ng-click='dislike(message.id)' class="pull-right btn btn-success btn-outline btn-sm btn-rounded">Like {{message.likes.length}}</button>
 			</div>
 		</div>
 	</div>

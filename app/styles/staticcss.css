@@ -5557,6 +5557,9 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
 }
+.panel-bording{
+  border-radius: 50px;
+}
 .embed-responsive {
   position: relative;
   display: block;
@@ -6475,6 +6478,16 @@ button.close {
 .user-avatar {
   width: 125px;
   height: 125px;
+}
+.user-avatar2 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+}
+.user-avatar3 {
+  width: 125px;
+  height: 125px;
+  border-radius: 50px;
 }
 .form-page {
   position: relative;
